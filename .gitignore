@@ -1,0 +1,8 @@
+.venv/
+.env
+datasets/
+__pycache__/
+*.pyc
+reports/generated/
+.idea/
+.vscode/

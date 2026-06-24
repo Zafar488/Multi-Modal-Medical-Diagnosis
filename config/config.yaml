@@ -1,0 +1,61 @@
+# Medical Diagnosis Assistant Configuration
+
+app:
+  name: "Multi-Modal Medical Diagnosis Assistant"
+  version: "1.0.0"
+  debug: true
+  port: 8501
+
+models:
+  xray:
+    path: "models/xray_model.h5"
+    img_size: 224
+    classes: ["NORMAL", "PNEUMONIA"]
+
+  skin:
+    path: "models/skin_model.h5"
+    img_size: 224
+    classes: ["benign", "malignant"]
+
+  symptom:
+    model: "models/disease_prediction_model.pkl"
+    encoder: "models/label_encoder.pkl"
+    features: "models/feature_names.pkl"
+
+dataset:
+  chest_xray:
+    train: "datasets/chest_xray/train"
+    test: "datasets/chest_xray/test"
+    val: "datasets/chest_xray/val"
+
+  skin_cancer:
+    images_part_1: "datasets/skin_cancer/HAM10000_images_part_1"
+    images_part_2: "datasets/skin_cancer/HAM10000_images_part_2"
+    metadata: "datasets/skin_cancer/HAM10000_metadata.csv"
+
+  symptoms:
+    train: "datasets/symptoms/Training.csv"
+    test: "datasets/symptoms/Testing.csv"
+
+training:
+  batch_size: 32
+  epochs: 5
+  learning_rate: 0.001
+  validation_split: 0.2
+
+report:
+  output_dir: "reports/generated"
+  company_name: "AI Medical Diagnosis System"
+  disclaimer: "This report is for educational purposes only. Consult a healthcare professional for medical advice."
+
+chatbot:
+  max_history: 10
+  emergency_keywords:
+    - "emergency"
+    - "urgent"
+    - "severe pain"
+    - "bleeding"
+    - "unconscious"
+    - "heart attack"
+    - "stroke"
+    - "choking"
