@@ -10,7 +10,7 @@ tensorflow-cpu>=2.15.0
 h5py>=3.7.0
 
 # Computer Vision
-opencv-python>=4.5.0
+opencv-python-headless>=4.5.0
 Pillow>=9.0.0
 
 # Data Science & Processing
